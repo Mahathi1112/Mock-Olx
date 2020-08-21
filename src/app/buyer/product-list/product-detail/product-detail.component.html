@@ -1,0 +1,10 @@
+<app-top-bar [cartLength]="cartLength"></app-top-bar>
+<section *ngIf="product">
+  <h2>Product Details:</h2>
+  <img src="{{ product.imageURL }}" height="200" width="200" />
+  <h3>{{ product.name }}</h3>
+  <p>{{ product.location }}</p>
+  <p>Product's age:{{ product.yearOfPurchase | getAge }}</p>
+  <h4>{{ product.price | currency }}</h4>
+  <button (click)="addToCart(product)">Add to Cart</button>
+</section>

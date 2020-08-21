@@ -1,0 +1,20 @@
+<app-top-bar [cartLength]="cartLength"></app-top-bar>
+<h2>Item Details</h2>
+<div *ngFor="let item of cartItems | keyvalue" class="cart-container">
+  <article>
+    <span [routerLink]="['/buy', item.key]">
+      <img src="{{ item.value.product.imageURL }}" height="200" width="200" />
+      <h3>{{ item.value.product.name }}</h3>
+      <p>{{ item.value.product.location }}</p>
+      <p>Product's age:{{ item.value.product.yearOfPurchase | getAge }}</p>
+      <h4>{{ item.value.product.price | currency }}</h4>
+    </span>
+    <button (click)="removeFromCart(item.key)">Remove Item</button>
+  </article>
+  <span class="count">
+    <h3>Count:</h3>
+    <h4>{{ item.value.count }}</h4>
+    <button (click)="incrementCount(item.key)">inc</button>
+    <button (click)="decrementCount(item.key)">dec</button>
+  </span>
+</div>

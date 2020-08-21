@@ -1,0 +1,16 @@
+<section class="card-layout">
+  <span *ngFor="let product of productList; index as i" class="item-card">
+    <article [routerLink]="product.id">
+      <h4>{{ i + 1 }}.</h4>
+      <img src="{{ product.imageURL }}" height="200" width="200" />
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.location }}</p>
+      <p>Product's age:{{ product.yearOfPurchase | getAge }}</p>
+      <h4>{{ product.price | currency }}</h4>
+    </article>
+    <button (click)="emitAddtoCartEvent(product)">
+      Add to Cart
+    </button>
+    <p *ngIf="addedToCartMessage">Added To Cart</p>
+  </span>
+</section>

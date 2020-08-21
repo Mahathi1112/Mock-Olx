@@ -1,0 +1,24 @@
+<app-top-bar [cartLength]="cartLength"></app-top-bar>
+<div>
+  <span>
+    <h3>Filter By Categories:</h3>
+    <input
+      list="genre"
+      id="filter"
+      name="categories"
+      type="text"
+      (change)="onChange($event)"
+    />
+    <datalist id="genre">
+      <option *ngFor="let category of categoryList" [value]="category">{{
+        category
+      }}</option>
+    </datalist>
+  </span>
+  <h1 class="list-category">{{ category }}</h1>
+
+  <app-item-card
+    [productList]="productList"
+    (addToCart)="addToCart($event)"
+  ></app-item-card>
+</div>

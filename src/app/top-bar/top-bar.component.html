@@ -1,0 +1,8 @@
+<div>
+  <h1 [routerLink]="['/']">Mock OLX Store</h1>
+  <span class="button-container">
+    <button *ngIf="isBuyerPage()" [routerLink]="['/sell']">Sell Items</button>
+    <button *ngIf="isSellerPage()" [routerLink]="['/buy']">Buy Items</button>
+    <button [routerLink]="['/cart']">Cart({{ cartLength }})</button>
+  </span>
+</div>

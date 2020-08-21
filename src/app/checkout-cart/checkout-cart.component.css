@@ -1,0 +1,20 @@
+.cart-container {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  padding: 3em;
+  border-bottom: 1px solid;
+}
+
+img {
+  display: block;
+}
+
+.count {
+  margin-left: 4em;
+}
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+}

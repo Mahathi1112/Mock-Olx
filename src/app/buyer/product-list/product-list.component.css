@@ -1,0 +1,14 @@
+span {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+}
+
+h3 {
+  margin: 0;
+}
+
+.list-category {
+  text-align: center;
+  text-decoration: underline;
+}

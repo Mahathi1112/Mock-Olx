@@ -1,0 +1,138 @@
+<app-top-bar [cartLength]="cartLength"></app-top-bar>
+<section>
+  <h3><label>Seller Form:</label></h3>
+  <form [formGroup]="sellerForm" (ngSubmit)="onSubmit()">
+    <label>
+      Product Name*:
+      <input
+        type="text"
+        formControlName="name"
+        [style.border]="
+          sellerForm.controls.name.touched &&
+          sellerForm.controls.name.invalid &&
+          '1px solid red'
+        "
+        required
+      />
+      <div
+        *ngIf="
+          sellerForm.controls.name.touched && sellerForm.controls.name.invalid
+        "
+        class="validation-message"
+      >
+        Product Name is required
+      </div>
+    </label>
+    <label>
+      Category*:
+      <select formControlName="category">
+        <option *ngFor="let category of categories" [value]="category">{{
+          category
+        }}</option>
+      </select>
+      <div
+        *ngIf="
+          sellerForm.controls.category.touched &&
+          sellerForm.controls.category.invalid
+        "
+        class="validation-message"
+      >
+        Category is required
+      </div>
+    </label>
+
+    <label>
+      Year Of Purchase*:
+      <input
+        type="number"
+        min="1900"
+        max="2099"
+        step="1"
+        value="2016"
+        formControlName="yearOfPurchase"
+        [style.border]="
+          sellerForm.controls.yearOfPurchase.touched &&
+          sellerForm.controls.yearOfPurchase.invalid &&
+          '1px solid red'
+        "
+      />
+      <div
+        *ngIf="
+          sellerForm.controls.yearOfPurchase.touched &&
+          sellerForm.controls.yearOfPurchase.invalid
+        "
+        class="validation-message"
+      >
+        Year Of Purchase is required(1900-2099)
+      </div>
+    </label>
+
+    <label>
+      Item Initially Bought at($)*:
+      <input type="number" formControlName="originalPrice" />
+      <div
+        *ngIf="
+          sellerForm.controls.originalPrice.touched &&
+          sellerForm.controls.originalPrice.invalid
+        "
+        class="validation-message"
+      >
+        Initial Price is required
+      </div>
+    </label>
+
+    <label>
+      Selling Price($)*:
+      <input
+        type="number"
+        formControlName="price"
+        [style.border]="
+          sellerForm.controls.price.touched &&
+          sellerForm.controls.price.invalid &&
+          '1px solid red'
+        "
+      />
+      <div
+        *ngIf="
+          sellerForm.controls.price.touched && sellerForm.controls.price.invalid
+        "
+        class="validation-message"
+      >
+        Price is required
+      </div>
+      <div
+        *ngIf="
+          !sellerForm.controls.price.invalid &&
+          !sellerForm.controls.yearOfPurchase.invalid &&
+          !sellerForm.controls.originalPrice.invalid
+        "
+      >
+        <span
+          [style.color]="
+            sellerForm.controls.price.value >
+            sellerForm.controls.originalPrice.value - 10
+              ? 'red'
+              : 'green'
+          "
+          class="validation-message"
+        >
+          {{ sellerForm.controls.price.value || currency }}
+          {{
+            sellerForm.controls.price.value >
+            sellerForm.controls.originalPrice.value - 10
+              ? "(re-selling at a high price is unethical)"
+              : "(Good to go)"
+          }}
+        </span>
+      </div>
+    </label>
+
+    <label>
+      Location:
+      <input type="text" formControlName="location" />
+    </label>
+    <label>
+      <button type="submit" [disabled]="!sellerForm.valid">Submit</button>
+    </label>
+  </form>
+</section>

@@ -1,0 +1,25 @@
+.img {
+  width: 100px;
+  height: 100px;
+  background-image: url("https://m.media-amazon.com/images/I/61oMsp+HiLL._SR500,500_.jpg");
+}
+
+p,
+h3,
+h4 {
+  margin: 0.3em;
+}
+
+.item-card {
+  border: 1px solid black;
+  width: fit-content;
+  margin: 1em;
+  padding: 1em;
+}
+
+.card-layout {
+  display: flex;
+  width: 65%;
+  flex-wrap: wrap;
+  margin: auto;
+}
